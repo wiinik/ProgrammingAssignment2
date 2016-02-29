@@ -1,0 +1,42 @@
+## I show y results for Assignment 2
+## Put comments here that give an overall description of what your
+## functions do
+##it is a function that cache the inverse of a matrix
+
+## Write a short comment describing this function
+## It is based on the example provided for the Assignment. I 
+## adapted the example to my need and obtained this results.
+
+makeCacheMatrix <- function(x = matrix()) {
+        i <- NULL
+        set <- function(y) {
+                x <<- y
+                i <<- NULL
+        }
+        get <- function() x
+        setinverse <- function(inv) i <<- inv
+        getinverse <- function() i
+        list(
+                set = set,
+                get = get,
+                setinverse = setinverse,
+                getinverse = getinverse
+        )
+}
+
+
+
+## Write a short comment describing this function
+## Again, I tried to adapt the example provided previously to what 
+## we were asked for the actual Assignment
+
+cacheSolve <- function(x, ...) {
+       i <- x$getinverse()
+       if(!is.null(i)) {
+               message("getting cached data")
+               return(i)
+       }
+       m <- x$get()
+       i <- solve(m, ...)
+       x$setinverse(i)
+}
